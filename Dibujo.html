@@ -1,85 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bill Bala</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #87CEEB;
-            margin: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bill Bala</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #87CEEB;
+      margin: 0;
+    }
 
-        .bill {
-            width: 400px;
-            height: 400px;
-            background: black;
-            border-radius: 200px 0 0 200px;
-            overflow: hidden;
-        }
+    .bill {
+      width: 400px;
+      height: 400px;
+      background: black;
+      border-radius: 200px 0 0 200px;
+      overflow: hidden;
+    }
 
-        /* Efecto de brillo alrededor de la bala, pero con el centro intacto */
-        .brillo {
-            width: 450px; /* Más grande que la bala */
-            height: 450px;
-            border-radius: 225px 0 0 225px;
-            background: rgba(255, 255, 255, 0.2); /* Color blanco semitransparente */
-            filter: blur(40px); /* Efecto de brillo difuso */
-            z-index: -1; /* Se coloca detrás, pero sin position */
-            flex-shrink: 0; /* Evita que se reduzca */
-        }
-          
+    /* Efecto de brillo alrededor de la bala, pero con el centro intacto */
+    .brillo {
+      width: 550px; /* Más grande que la bala */
+      height: 500px;
+      border-radius: 225px 0 0 225px;
+      background: rgba(255, 255, 255, 0.2); /* Color blanco semitransparente */
+      filter: blur(40px); /* Efecto de brillo difuso */
+      flex-shrink: 0; /* Evita que se reduzca */
+    }
+    
+    .ojo {
+      display: grid;
+      place-items: center; /* Centra los elementos en la celda */
+      width: 100px;
+      height: 50px;
+      background: white;
+      border-radius: 0 0 40px 40px;
+      transform: translate(80px, 100px) rotate(-45deg);
+      /* Sin posicionamiento ni z-index */
+    }
 
-        .ojo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100px;
-            height: 50px;
-            background: white;
-            border-radius: 0 0 40px 40px;
-            transform: translate(80px, 100px) rotate(-45deg);
-            z-index: 2;
-        }
+    /* Ambos elementos se ubican en la misma celda del grid */
+    .ojo > * {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+    
+    .ojo .brillo {
+      width: 450px; /* Más grande para crear el efecto de brillo */
+      height: 450px;
+      border-radius: 225px 0 0 225px;
+      background: rgba(255, 255, 255, 0.2);
+      filter: blur(40px);
+    }
+    
+    .ojo .pupil {
+      width: 50px;
+      height: 50px;
+      background: black;
+      border-radius: 50%;
+      transform: translate(-185px, -215px);
+    }
+    
+    .boca {
+      width: 160px;
+      height: 100px;
+      background: red;
+      border-radius: 80px / 50px;
+      bottom: 30px;
+      left: 50px;
+      overflow: hidden;
+      clip-path: ellipse(80px 50px at 80px 60px); /* Desplazar el centro del óvalo */
+      transform: translate(30px, 170px) rotate(-45deg);
+    }
 
-        .ojo .pupil {
-            width: 50px;
-            height: 50px;
-            background: black;
-            border-radius: 50%;
-            transform: translate(-10px, -10px);
-            z-index: 3;
-        }
-
-
-
-        /* Boca */
-        .mouth {
-            width: 40px;
-            height: 40px;
-            background: red;
-            border-radius: 50%;
-        }
-
-
-    </style>
+  </style>
 </head>
 <body>
-    <div class="bill">
-        
-        <div class="ojo">
-            <div class="pupil"></div>
-        <div class="brillo"></div>
-            
-        </div>
-        <div class="mouth"></div>
-        <div class="shine"></div>
-        <div class="arm"></div>
-        <div class="lines"></div>
+  <div class="bill">
+    <div class="ojo">
+      <div class="brillo"></div>
+      <div class="pupil"></div>
     </div>
+    <div class="boca"></div>
+  </div>
 </body>
 </html>
