@@ -1,90 +1,226 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bill Bala</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #87CEEB;
-      margin: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Bala</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #87CEEB;
+            margin: 0;
+        }
 
-    .bill {
-      width: 400px;
-      height: 400px;
-      background: black;
-      border-radius: 200px 0 0 200px;
-      overflow: hidden;
-    }
+        .contenedor {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
 
-    /* Efecto de brillo alrededor de la bala, pero con el centro intacto */
-    .brillo {
-      width: 550px; /* Más grande que la bala */
-      height: 500px;
-      border-radius: 225px 0 0 225px;
-      background: rgba(255, 255, 255, 0.2); /* Color blanco semitransparente */
-      filter: blur(40px); /* Efecto de brillo difuso */
-      flex-shrink: 0; /* Evita que se reduzca */
-    }
-    
-    .ojo {
-      display: grid;
-      place-items: center; /* Centra los elementos en la celda */
-      width: 100px;
-      height: 50px;
-      background: white;
-      border-radius: 0 0 40px 40px;
-      transform: translate(80px, 100px) rotate(-45deg);
-      /* Sin posicionamiento ni z-index */
-    }
+        .bill {
+            width: 400px;
+            height: 400px;
+            background: black;
+            border-radius: 200px 0 0 200px;
+            overflow: hidden;
+        }
 
-    /* Ambos elementos se ubican en la misma celda del grid */
-    .ojo > * {
-      grid-area: 1 / 1 / 2 / 2;
-    }
-    
-    .ojo .brillo {
-      width: 450px; /* Más grande para crear el efecto de brillo */
-      height: 450px;
-      border-radius: 225px 0 0 225px;
-      background: rgba(255, 255, 255, 0.2);
-      filter: blur(40px);
-    }
-    
-    .ojo .pupil {
-      width: 50px;
-      height: 50px;
-      background: black;
-      border-radius: 50%;
-      transform: translate(-185px, -215px);
-    }
-    
-    .boca {
-      width: 160px;
-      height: 100px;
-      background: red;
-      border-radius: 80px / 50px;
-      bottom: 30px;
-      left: 50px;
-      overflow: hidden;
-      clip-path: ellipse(80px 50px at 80px 60px); /* Desplazar el centro del óvalo */
-      transform: translate(30px, 170px) rotate(-45deg);
-    }
+        .ojo {
+            display: grid;
+            place-items: center;
+            width: 150px;
+            height: 80px;
+            background: white;
+            border-radius: 0 0 60px 60px;
+            transform: translate(80px, 100px) rotate(-45deg);
+        }
 
-  </style>
+        .ojo > * {
+            grid-area: 1 / 1 / 2 / 2;
+        }
+
+        .ojo .brillo {
+            width: 450px;
+            height: 450px;
+            border-radius: 225px 0 0 225px;
+            background: rgba(255, 255, 255, 0.2);
+            filter: blur(40px);
+        }
+
+        .ojo .pupil {
+            width: 50px;
+            height: 50px;
+            background: black;
+            border-radius: 50%;
+            transform: translate(-185px, -215px);
+        }
+
+        .reflejo {
+            display: flex;
+            gap: 10px;
+            margin-top: -30px;
+            margin-left: 20px;
+        }
+
+        .reflejo div {
+            width: 40px;
+            height: 40px;
+            background-color: rgb(224, 215, 215);
+            border-radius: 50%;
+        }
+
+        .reflejo div:nth-child(1) {
+            transform: translate(-70px, -240px);
+        }
+
+        .reflejo div:nth-child(2) {
+            width: 80px;
+            height: 40px;
+            transform: translate(-70px, -210px) rotate(35deg);
+        }
+
+        .boca {
+            width: 400px;
+            height: 140px;
+            background: rgb(255, 255, 255);
+            border-radius: 80px / 5px;
+            overflow: hidden;
+            clip-path: ellipse(120px 80px at 120px 80px);
+            transform: translate(-112px, 215px) rotate(140deg);
+        }
+
+        .diente1 {
+            display: flex;
+            transform: translate(20px, -52px) rotate(-90deg);
+        }
+
+        .diente1 div:nth-child(1) {
+            width: 80px;
+            height: 70px;
+            background-color: red;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            transform: translate(22px,-110px) rotate(0deg);
+        }
+
+        .diente1 div:nth-child(2) {
+            width: 90px;
+            height: 70px;
+            background-color: red;
+            transform: translate(-20px,-50px);
+        }
+
+        .diente1 div:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            background-color: red;
+            border-radius: 0 20px 40px 20px;
+            transform: translate(-40px,-0px) rotate(0deg);
+        }
+
+        .bill2 {
+            width: 30px;
+            height: 370px;
+            background: black;
+            overflow: hidden;
+            transform: translate(-50px,-0px);
+        }
+
+        .brillo2 {
+            width: 20px;
+            height: 370px;
+            background: rgba(255, 255, 255, 0.4);
+            filter: blur(20px);
+            border-radius: 40px;
+            transform: translate(-100px,-0px);
+        }
+
+        .reflejo2 {
+            display: flex;
+        }
+
+        .reflejo2 div {
+            width: 30px;
+            height: 20px;
+            background-color: rgb(201, 191, 191);
+        }
+
+        .reflejo2 div:nth-child(1) {
+            transform: translate(-200px, -130px);
+        }
+
+        .reflejo2 div:nth-child(2) {
+            transform: translate(-230px, 120px);
+        }
+
+        .bill3 {
+            width: 100px;
+            height: 400px;
+            background: black;
+            overflow: hidden;
+            transform: translate(-280px,-0px);
+        }
+
+        .brillo3 {
+            width: 80px;
+            height: 370px;
+            background: rgba(255, 255, 255, 0.15);
+            filter: blur(20px);
+            border-radius: 40px;
+            transform: translate(-400px,-0px);
+        }
+
+        .reflejo3 {
+            display: grid;
+        }
+
+        .reflejo3 div {
+            width: 80px;
+            height: 20px;
+            background-color: rgb(218, 208, 208);
+        }
+
+        .reflejo3 div:nth-child(1) {
+            transform: translate(-550px, -130px);
+        }
+
+        .reflejo3 div:nth-child(2) {
+            transform: translate(-550px, 120px);
+        }
+    </style>
 </head>
 <body>
-  <div class="bill">
-    <div class="ojo">
-      <div class="brillo"></div>
-      <div class="pupil"></div>
+    <div class="contenedor">
+        <div class="bill">
+            <div class="ojo">
+                <div class="brillo"></div>
+                <div class="pupil"></div>
+                <div class="reflejo">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="boca"></div>
+            <div class="diente1">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="bill2"></div>
+        <div class="brillo2"></div>
+        <div class="reflejo2">
+            <div></div>
+            <div></div>
+        </div>
+        <div class="bill3"></div>
+        <div class="brillo3"></div>
+        <div class="reflejo3">
+            <div></div>
+            <div></div>
+        </div>
     </div>
-    <div class="boca"></div>
-  </div>
 </body>
 </html>
